@@ -71,7 +71,7 @@ public class Ticket {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 702, 538);
+		frame.setBounds(100, 100, 702, 560);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -308,6 +308,7 @@ public class Ticket {
 		frame.getContentPane().add(comboBox_1);
 		
 		JButton btnTotal = new JButton("Total");
+		btnTotal.setBounds(10, 366, 89, 23);
 		btnTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Calendar timer=Calendar.getInstance();
@@ -385,11 +386,11 @@ public class Ticket {
 				textField_7.setText("Any");
 			}
 		});
-		btnTotal.setBounds(10, 366, 89, 23);
 		btnTotal.setFont(new Font("Tahoma", Font.BOLD, 11));
 		frame.getContentPane().add(btnTotal);
 		
 		JButton btnReset = new JButton("Reset");
+		btnReset.setBounds(116, 366, 89, 23);
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText(null);
@@ -416,7 +417,6 @@ public class Ticket {
 			}
 			
 		});
-		btnReset.setBounds(116, 366, 89, 23);
 		btnReset.setFont(new Font("Tahoma", Font.BOLD, 11));
 		frame.getContentPane().add(btnReset);
 		
@@ -474,5 +474,27 @@ public class Ticket {
 		JSeparator separator_3 = new JSeparator();
 		separator_3.setBounds(304, 106, 1, 2);
 		frame.getContentPane().add(separator_3);
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int row=table_1.getSelectedRow();
+				DefaultTableModel model=(DefaultTableModel)table_1.getModel();
+				//model.removeRow(row);
+				try
+				{
+					int rownum=table_1.getSelectedRow();
+					model.removeRow(rownum);
+				}
+				catch(Exception msg)
+				{
+					JOptionPane.showMessageDialog(null,"Please Show the Particular row");
+				}
+			}
+	
+			
+		});
+		btnDelete.setBounds(292, 499, 89, 23);
+		frame.getContentPane().add(btnDelete);
 	}
 }
